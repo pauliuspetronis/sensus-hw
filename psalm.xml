@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<psalm
+        errorLevel="4"
+        resolveFromConfigFile="true"
+        cacheDirectory=".psalm_cache"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <InternalMethod errorLevel="info"/>
+        <TypeDoesNotContainNull errorLevel="suppress"/>
+        <MismatchingDocblockParamType errorLevel="suppress"/>
+        <MismatchingDocblockReturnType errorLevel="suppress"/>
+        <InvalidReturnStatement errorLevel="suppress"/>
+        <NullReference errorLevel="suppress"/>
+        <ImplicitToStringCast errorLevel="suppress"/>
+        <InvalidArgument errorLevel="suppress"/>
+        <InvalidCatch errorLevel="suppress"/>
+        <NullableReturnStatement errorLevel="suppress"/>
+        <RedundantCast errorLevel="suppress"/>
+        <InvalidScalarArgument errorLevel="suppress"/>
+        <RedundantCondition errorLevel="suppress"/>
+        <TypeDoesNotContainType errorLevel="suppress"/>
+        <UndefinedMethod errorLevel="suppress"/>
+        <ImplementedReturnTypeMismatch errorLevel="suppress"/>
+        <InvalidNullableReturnType errorLevel="suppress"/>
+        <InvalidReturnType errorLevel="suppress"/>
+        <LessSpecificImplementedReturnType errorLevel="suppress"/>
+        <TooManyArguments>
+            <errorLevel type="suppress">
+<!--                <directory name="src/Repository"/>-->
+            </errorLevel>
+        </TooManyArguments>
+        <PluginIssue name="QueryBuilderSetParameter" errorLevel="suppress" />
+    </issueHandlers>
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+    </plugins>
+</psalm>

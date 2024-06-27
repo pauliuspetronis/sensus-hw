@@ -1,0 +1,10 @@
+; OVERRIDES FOR DEVELOPMENT IMAGE
+
+[PHP]
+memory_limit = -1
+max_execution_time = 0
+opcache.enable_cli=0
+
+
+xdebug.mode=${PHP_XDEBUG_MODE}
+xdebug.client_host=host.docker.internal

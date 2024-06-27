@@ -1,0 +1,28 @@
+services:
+  db:
+    image: mariadb:11.4.2
+    ports:
+      - "127.0.0.1:3306:3306"
+    environment:
+        - MARIADB_DATABASE=${MYSQL_DATABASE:-sensus}
+        - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+        - MARIADB_USER=${MYSQL_USER:-sensus}
+        - MARIADB_PASSWORD=${MYSQL_PASSWORD:-sensus}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build: ./.docker
+    working_dir: /app
+    ports:
+      - "127.0.0.1:80:80"
+    volumes:
+      - ./:/app/
+    environment:
+      - PHP_XDEBUG_MODE=${PHP_XDEBUG_MODE:-debug}
+      - PHP_XDEBUG_START_WITH_REQUEST=${PHP_XDEBUG_START_WITH_REQUEST:-yes}
+    depends_on:
+      - db
+
+volumes:
+  db_data:

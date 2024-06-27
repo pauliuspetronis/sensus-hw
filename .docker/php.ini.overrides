@@ -1,0 +1,9 @@
+; OVERRIDES FOR DEVELOPMENT IMAGE
+
+max_input_vars=3000
+
+xdebug.mode=${PHP_XDEBUG_MODE}
+xdebug.client_host=host.docker.internal
+xdebug.start_with_request=${PHP_XDEBUG_START_WITH_REQUEST}
+
+upload_max_filesize=64M

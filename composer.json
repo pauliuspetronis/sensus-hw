@@ -1,0 +1,141 @@
+{
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.2",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "doctrine/dbal": "^3",
+        "doctrine/doctrine-bundle": "^2.12",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "doctrine/orm": "^3.2",
+        "nelmio/api-doc-bundle": "^4.28",
+        "phpdocumentor/reflection-docblock": "^5.4",
+        "phpstan/phpdoc-parser": "^1.29",
+        "symfony/asset": "7.1.*",
+        "symfony/console": "7.1.*",
+        "symfony/dotenv": "7.1.*",
+        "symfony/flex": "^2",
+        "symfony/form": "7.1.*",
+        "symfony/framework-bundle": "7.1.*",
+        "symfony/property-access": "7.1.*",
+        "symfony/property-info": "7.1.*",
+        "symfony/runtime": "7.1.*",
+        "symfony/serializer": "7.1.*",
+        "symfony/twig-bundle": "7.1.*",
+        "symfony/validator": "7.1.*",
+        "symfony/yaml": "7.1.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true,
+            "veewee/composer-run-parallel": true,
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php82": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "ecs": [
+            "vendor/bin/ecs check"
+        ],
+        "php-lint": [
+            "vendor/bin/phplint src/ tests/"
+        ],
+        "container-test": [
+            "bin/console lint:container"
+        ],
+        "yaml-lint": [
+            "bin/console lint:yaml --parse-tags config/"
+        ],
+        "twig-lint": [
+            "bin/console lint:twig templates/"
+        ],
+        "phpstan": [
+            "bin/console cache:warmup && vendor/bin/phpstan analyze"
+        ],
+        "rector": [
+            "XDEBUG_MODE=off vendor/bin/rector process --dry-run"
+        ],
+        "phpunit": [
+            "XDEBUG_MODE=off bin/phpunit"
+        ],
+        "cq": [
+            "@ecs",
+            "@phpunit",
+            "@rector",
+            "@phpstan",
+            "@php-lint",
+            "@container-test",
+            "@yaml-lint",
+            "@twig-lint",
+            "@psalm"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "7.1.*"
+        }
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.6",
+        "overtrue/phplint": "^9.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.2",
+        "phpstan/phpstan-symfony": "^1.0",
+        "psalm/plugin-symfony": "^5.0",
+        "rector/rector": "^1.0",
+        "roave/security-advisories": "dev-latest",
+        "shipmonk/phpstan-rules": "^3.0",
+        "symfony/browser-kit": "7.1.*",
+        "symfony/css-selector": "7.1.*",
+        "symfony/debug-bundle": "7.1.*",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "7.1.*",
+        "symfony/stopwatch": "7.1.*",
+        "symfony/web-profiler-bundle": "7.1.*",
+        "symplify/easy-coding-standard": "^12.0",
+        "veewee/composer-run-parallel": "^1.0",
+        "vimeo/psalm": "^5.4"
+    }
+}

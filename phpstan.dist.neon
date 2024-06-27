@@ -1,0 +1,15 @@
+includes:
+    - phpstan-baseline.neon
+    - phpstan-shipmonk.neon
+parameters:
+    tmpDir: .phpstan.cache
+    level: 8
+    fileExtensions:
+        - php
+    paths:
+        - ./src
+    excludePaths:
+        - src/Helper/TypesHelper.php
+    symfony:
+        container_xml_path: %rootDir%/../../../var/cache/dev/App_KernelDevDebugContainer.xml
+    treatPhpDocTypesAsCertain: false
